@@ -6,5 +6,6 @@ FactoryGirl.define do
     duration 1
     synopsis "A long long ..."
     year 1999
+    category ""
   end
 end
