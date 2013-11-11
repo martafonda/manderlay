@@ -2,3 +2,24 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+.field{
+	width: 400px; 
+	margin:none;}
+.field input{width: 100%}
+#movie_synopsis{
+	width: 100%;
+	height: 150px;
+	resize: none;
+	}
+table{
+	width: 800px; 
+	border:1px solid rgb(0,0,0);
+	border-collapse:collapse;}
+th{
+	background-color: rgb(0,0,0); 
+	color:rgb(255,255,255);}
+tr{
+	border-bottom: 1px solid rgb(0,0,0)}
+tr:nth-child(odd){
+	background-color: rgb(201,201,201);
+	color: rgb(0,0,0);};
