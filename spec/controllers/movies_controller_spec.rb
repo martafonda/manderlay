@@ -142,19 +142,19 @@ describe MoviesController do
     end
   end
 
-  describe "DELETE destroy" do
-    it "destroys the requested movie" do
-      movie = FactoryGirl.create(:movie)
-      expect {
-        delete :destroy, {:id => movie.to_param}, valid_session
-      }.to change(Movie, :count).by(-1)
-    end
+  # describe "DELETE destroy" do
+  #   it "destroys the requested movie" do
+  #     movie = FactoryGirl.create(:movie)
+  #     expect {
+  #       delete :destroy, {:id => movie.to_param}, valid_session
+  #     }.to change(Movie, :count).by(-1)
+  #   end
 
-    it "redirects to the movies list" do
-      movie = FactoryGirl.create(:movie)
-      delete :destroy, {:id => movie.to_param}, valid_session
-      expect(response).to redirect_to(movies_url)
-    end
-  end
+  #   it "redirects to the movies list" do
+  #     movie = FactoryGirl.create(:movie)
+  #     delete :destroy, {:id => movie.to_param}, valid_session
+  #     expect(response).to redirect_to(movies_url)
+  #   end
+  # end
 
 end
