@@ -1,37 +1,76 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @movie.title %>
-</p>
+<section class="row">
+  <p>
+    <strong>Title:</strong>
+    <%= @movie.title %>
+  </p>
 
-<p>
-  <strong>Duration:</strong>
-  <%= @movie.duration %>
-</p>
-<p>
-  <strong>Synopsis:</strong>
-  <%= @movie.synopsis %>
-</p>
-<p>
-  <strong>Year:</strong>
-  <%= @movie.year %>
-</p>
-<p>
-  <strong>Category:</strong>
-  <%= @movie.category %>
-</p>
+  <p>
+    <strong>Duration:</strong>
+    <%= @movie.duration %>
+  </p>
+  <p>
+    <strong>Synopsis:</strong>
+    <%= @movie.synopsis %>
+  </p>
+  <p>
+    <strong>Year:</strong>
+    <%= @movie.year %>
+  </p>
+  <p>
+    <strong>Category:</strong>
+    <%= @movie.category %>
+  </p>
+</section>
 
-<p>
-  
-  <% @comments.each do |comment| %>
-    <strong>Comment author:</strong>
-    <%= comment.author %>
-    <strong>Comment body:</strong>
-    <%= comment.body %><br>
-  <% end %>
-</p>
+<section class="row">
+  <article class="">
+    <header><h4>COMMENTS<h4> </header>
+    <p>
+      <table>
+        <thead>
+          <tr>
+            <th>Author</th>
+            <th>Body</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @comments.each do |comment| %>
+          <tr>
+            <td><%= comment.author %></td>
+            <td><%= comment.body %></td>
+          <tr>
+          <% end %>
+        </tbody>
+      </table>
+    </p>
+    <%= link_to 'Comments of the movie', movie_comments_path(@movie) %> 
+  </article>
 
-<%= link_to 'New Comment', new_movie_comment_path(@movie) %>|
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', movies_path %>
+  <article class="">
+    <header><h4>CAST</h4> </header>
+    <% if @movie.casts.empty? %>
+      <strong>No people is here</strong>
+    <% else %>  
+    <ul>
+      <%= @movie.casts.each do |c| %>
+        <li>
+          <%= c.person.complete_name %> 
+          (
+          <%= c.role.titleize %>
+          )
+        </li>
+      <% end %>
+    </ul>
+    <% end %>
+    <p>
+  </article>
+</section>
+<section class="row">
+  <%= link_to 'Add New Cast', movie_new_cast_path(@movie) %> | 
+  <%= link_to 'New Comment', new_movie_comment_path(@movie) %> | 
+  <%= link_to 'New Person', new_person_path %> | 
+  <%= link_to 'Edit', edit_movie_path(@movie) %> | 
+  <%= link_to 'Back', movies_path %>
+</section>

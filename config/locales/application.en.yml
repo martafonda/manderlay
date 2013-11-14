@@ -1,0 +1,9 @@
+es:
+  movie:
+    one: 'movie' 
+    other: 'movies'
+    title: 'title'
+    synopsis: 'synopsis'
+    category: 'category'
+    year: 'year'
+    duration: 'duration'

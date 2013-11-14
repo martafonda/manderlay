@@ -11,6 +11,8 @@ class MoviesController < ApplicationController
   # GET /movies/1.json
   def show
     @comments =  @movie.comments
+    @people =  @movie.people
+    @casts = Cast.all
   end
 
   # GET /movies/new
@@ -22,14 +24,30 @@ class MoviesController < ApplicationController
   def edit
   end
 
+  def new_cast
+    @cast = @movie.casts.build
+  end
+
+  def create_cast
+    @cast = @movie.casts.build(cast_params)
+    respond_to do |format|
+      if @cast.save
+        format.html { redirect_to movies_path }
+        format.json { render action: 'show', status: :created, location: @movie }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @cast.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # POST /movies
   # POST /movies.json
   def create
     @movie = Movie.new(movie_params)
-
     respond_to do |format|
       if @movie.save
-        format.html { redirect_to @movie, notice: 'Movie was successfully created.' }
+        format.html { redirect_to movie_comments_path(@movie), notice: 'Movie was successfully created.' }
         format.json { render action: 'show', status: :created, location: @movie }
       else
         format.html { render action: 'new' }
@@ -54,22 +72,26 @@ class MoviesController < ApplicationController
 
   # DELETE /movies/1
   # DELETE /movies/1.json
-  # def destroy
-  #   @movie.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to movies_url }
-  #     format.json { head :no_content }
-  #   end
-  # end
+  def destroy
+    @movie.destroy
+    respond_to do |format|
+      format.html { redirect_to movies_url }
+      format.json { head :no_content }
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_movie
-      @movie = Movie.find(params[:id])
+      @movie = Movie.find(params[:movie_id]||params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
       params.require(:movie).permit(:title, :duration, :synopsis, :year, :category)
+    end
+
+    def cast_params
+      params.require(:cast).permit(:person_id, :role)
     end
 end

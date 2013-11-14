@@ -1,0 +1,15 @@
+es:
+  movie:
+    one: 'película' 
+    other: 'película'
+    title: 'título'
+    synopsis: 'sinopsis'
+    category: 'categoría'
+    year: 'año'
+    duration: 'duración'
+    show: 'mostrar'
+    people: 'personas'
+    showpeople: 'mostrar Personas'
+    edit: 'editar'
+    destroy: 'eliminar'
+    new: 'nueva'

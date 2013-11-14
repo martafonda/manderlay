@@ -1,35 +1,46 @@
-<h1>Listing movies</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Duration</th>
-      <th>Synopsis</th>
-      <th>Year</th>
-      <th>Category</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @movies.each do |movie| %>
+<body>
+<header>
+  <div class="row">
+    <h1 class="hide-for-small">My movies app</h1>
+  <div>
+</header>
+<section class="row">
+  <table>
+    <thead>
       <tr>
-        <td><%= movie.title %></td>
-        <td><%= movie.duration %></td>
-        <td><%= movie.synopsis %></td>
-        <td><%= movie.year %></td>
-        <td><%= movie.category %></td>
-        <td><%= link_to 'Show', movie %></td>
-        <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-        <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th><%= t('movie.title').capitalize %></th>
+        <th><%= t('movie.duration').capitalize %></th>
+        <th><%= t('movie.synopsis').capitalize %></th>
+        <th><%= t('movie.year').capitalize %></th>
+        <th><%= t('movie.category').capitalize %></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @movies.each do |movie| %>
+        <tr>
+          <td><%= movie.title %></td>
+          <td><%= movie.duration %></td>
+          <td><%= movie.synopsis %></td>
+          <td><%= movie.year %></td>
+          <td><%= movie.category %></td>
+          <td><%= link_to t('movie.showpeople').capitalize, people_path(movie) %></td>
+          <td><%= link_to t('movie.show').capitalize, movie %></td>
+          <td><%= link_to t('movie.edit').capitalize, edit_movie_path(movie) %></td>
+          <td><%= link_to t('movie.destroy').capitalize, movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
 
-<%= link_to 'New Movie', new_movie_path %>
+
+<div class="row">
+  <%= link_to t('movie.new').capitalize, new_movie_path %>
+</div>
+
+</body>
