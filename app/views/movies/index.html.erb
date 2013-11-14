@@ -1,46 +1,37 @@
+<head>
+  <title>Movie's Application</title>
+</head>
+
 <body>
-<header>
+  <header>
+    <div class="bck dark color white padding">
+      <h1 class="row text center bold">My movies app</h1>
+    <div>
+  </header>
+
+  <section class="row">
+   <% @movies.each do |movie| %>
+    <article class="bck light column_4 margin-top padding movies-height relative">
+      <ul class="li-none">
+        <li><p><strong><%= t('movie.title').capitalize %> : </strong> <%= movie.title %></p></li>
+        <li><p><strong><%= t('movie.duration').capitalize %> : </strong><%= movie.duration %></p></li>
+        <li><p><strong><%= t('movie.synopsis').capitalize %> : </strong><%= movie.synopsis %></p></li>
+        <li><p><strong><%= t('movie.year').capitalize %> : </strong><%= movie.year %></p></li>
+        <li><p><strong><%= t('movie.category').capitalize %> : </strong><%= movie.category %></p></li>
+      </ul>
+    </article>
+    <nav class="column_3 absolute movies-button-position">
+      <span class="button tiny on-left"><%= link_to t('movie.show').capitalize, movie %></span>
+      <span class="button tiny on-right"><%= link_to t('movie.destroy').capitalize, movie, method: :delete, data: { confirm: 'Are you sure?' } %></span><br>
+      <span class="bold on-left"><%= link_to t('movie.showpeople').capitalize, people_path(movie) %></span>
+      <span class="bold on-right"><%= link_to t('movie.edit').capitalize, edit_movie_path(movie) %></span>
+    </nav>
+    <% end %>
+  </section>
+
+
   <div class="row">
-    <h1 class="hide-for-small">My movies app</h1>
-  <div>
-</header>
-<section class="row">
-  <table>
-    <thead>
-      <tr>
-        <th><%= t('movie.title').capitalize %></th>
-        <th><%= t('movie.duration').capitalize %></th>
-        <th><%= t('movie.synopsis').capitalize %></th>
-        <th><%= t('movie.year').capitalize %></th>
-        <th><%= t('movie.category').capitalize %></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @movies.each do |movie| %>
-        <tr>
-          <td><%= movie.title %></td>
-          <td><%= movie.duration %></td>
-          <td><%= movie.synopsis %></td>
-          <td><%= movie.year %></td>
-          <td><%= movie.category %></td>
-          <td><%= link_to t('movie.showpeople').capitalize, people_path(movie) %></td>
-          <td><%= link_to t('movie.show').capitalize, movie %></td>
-          <td><%= link_to t('movie.edit').capitalize, edit_movie_path(movie) %></td>
-          <td><%= link_to t('movie.destroy').capitalize, movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</section>
-
-
-<div class="row">
-  <%= link_to t('movie.new').capitalize, new_movie_path %>
-</div>
+    <%= link_to t('movie.new').capitalize, new_movie_path %>
+  </div>
 
 </body>

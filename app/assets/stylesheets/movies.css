@@ -2,3 +2,11 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+.relative{position: relative;}
+.absolute{position: absolute;}
+.movies-button-possition{bottom: 10%;}
+.movies-height{height: 20em;}
+.li-inline-block{display: inline-block;}
+.li-block{display: block}
+.li-inline li {display: inline}
+.li-none li {list-style-type: none;}
