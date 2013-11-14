@@ -40,6 +40,8 @@ end
 
 gem 'pry', group: [:development]
 
+gem 'json', group: [:development]
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
