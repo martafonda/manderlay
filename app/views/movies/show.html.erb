@@ -1,76 +1,78 @@
-<p id="notice"><%= notice %></p>
+<head>
+  <title>Movie Show</title>
+</head>
+<body>
+  <header class="bck dark padding color white">
+    <h1 class="row text center bold">My movies app</h1>
+  </header>
+  <section class="row margin-top">
+    <article class="column_4 offset_2">
+      <p>
+        <strong>Title:</strong>
+        <%= @movie.title %>
+      </p>
+      <p>
+        <strong>Duration:</strong>
+        <%= @movie.duration %>
+      </p>
+      <p>
+        <strong>Synopsis:</strong>
+        <%= @movie.synopsis %>
+      </p>
+      <p>
+        <strong>Year:</strong>
+        <%= @movie.year %>
+      </p>
+      <p>
+        <strong>Category:</strong>
+        <%= @movie.category %>
+      </p>
+    </article>
+    <div class="column_3 img h256 margin-bottom"></div>
+  </section>
 
-<section class="row">
-  <p>
-    <strong>Title:</strong>
-    <%= @movie.title %>
-  </p>
-
-  <p>
-    <strong>Duration:</strong>
-    <%= @movie.duration %>
-  </p>
-  <p>
-    <strong>Synopsis:</strong>
-    <%= @movie.synopsis %>
-  </p>
-  <p>
-    <strong>Year:</strong>
-    <%= @movie.year %>
-  </p>
-  <p>
-    <strong>Category:</strong>
-    <%= @movie.category %>
-  </p>
-</section>
-
-<section class="row">
-  <article class="">
-    <header><h4>COMMENTS<h4> </header>
-    <p>
-      <table>
-        <thead>
-          <tr>
-            <th>Author</th>
-            <th>Body</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @comments.each do |comment| %>
-          <tr>
-            <td><%= comment.author %></td>
-            <td><%= comment.body %></td>
-          <tr>
-          <% end %>
-        </tbody>
-      </table>
-    </p>
-    <%= link_to 'Comments of the movie', movie_comments_path(@movie) %> 
-  </article>
-
-  <article class="">
-    <header><h4>CAST</h4> </header>
-    <% if @movie.casts.empty? %>
-      <strong>No people is here</strong>
-    <% else %>  
-    <ul>
-      <%= @movie.casts.each do |c| %>
-        <li>
-          <%= c.person.complete_name %> 
-          (
-          <%= c.role.titleize %>
-          )
-        </li>
+  <section class="column_9 offset_2">
+    <article class="column_4 on-left">
+    <header class="bck theme padding column_4"><h5 class="text bold">COMMENTS<h5></header>
+    <div class="bck light margin-bottom padding column_4">
+      <% @comments.each do |comment| %>
+        <p class="text book"><span class="text bold">Author:</span>  <%= comment.author %></p> 
+        <p><span class="text bold">Body: </span> <%= comment.body %><p>
+        <hr>
       <% end %>
-    </ul>
-    <% end %>
-    <p>
-  </article>
-</section>
-<section class="row">
-  <%= link_to 'Add New Cast', movie_new_cast_path(@movie) %> | 
-  <%= link_to 'New Comment', new_movie_comment_path(@movie) %> | 
-  <%= link_to 'New Person', new_person_path %> | 
-  <%= link_to 'Edit', edit_movie_path(@movie) %> | 
-  <%= link_to 'Back', movies_path %>
-</section>
+      <div class= "text center">
+        <p class="button"><%= link_to 'Add new comment!', new_movie_comment_path(@movie) %></p> 
+      </div>
+    </div>
+    </article>
+
+    <article class="column_4 on-right">
+      <header class="bck color white padding"><h5 class="text bold">CAST</h5> </header>
+      <div class="bck light padding" >
+      <% if @movie.casts.empty? %>
+        <strong>No people is here</strong>
+      <% else %>  
+      <ul class="li-none">
+        <% @movie.casts.each do |c| %>
+          <li>
+            <%= c.person.complete_name %> 
+            (
+            <%= c.role.titleize %>
+            )
+          </li>
+        <% end %>
+      </ul>
+      <% end %>
+      <div class= "text center padding">
+        <p class="button secondary"><%= link_to 'Add new cast!', movie_new_cast_path(@movie) %></p> 
+      </div>
+      </div>
+    </article>
+  </section>
+  <section class="row text center">
+    <%= link_to 'New Person', new_person_path %> | 
+    <%= link_to 'Edit', edit_movie_path(@movie) %> | 
+    <%= link_to 'Back', movies_path %>
+  </section>
+
+</body>

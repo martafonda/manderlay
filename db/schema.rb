@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131113150100) do
+ActiveRecord::Schema.define(version: 20131115095305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20131113150100) do
     t.datetime "updated_at"
   end
 
+  add_index "casts", ["movie_id", "person_id", "role"], name: "index_casts_on_movie_id_and_person_id_and_role", unique: true, using: :btree
   add_index "casts", ["movie_id"], name: "index_casts_on_movie_id", using: :btree
   add_index "casts", ["person_id"], name: "index_casts_on_person_id", using: :btree
 

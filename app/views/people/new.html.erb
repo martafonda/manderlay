@@ -1,5 +1,18 @@
-<h1>New person</h1>
+<head>
+  <title>New People</title>
+</head>
+<body>
+  <header>
+      <div class= "bck dark color white padding">
+        <h1 class="text center bold">My movies app</h1>
+      </div>
+  </header>
 
-<%= render 'form' %>
+  <section class="row margin-top">
+    <article class="column_4 offset_4">
+      <%= render 'form' %>
+      <span><%= link_to 'Back to People Index', people_path %></span>
+    </article>
+  </section>
+</body>
 
-<%= link_to 'Back to People Index', people_path %>

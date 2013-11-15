@@ -35,7 +35,7 @@ class MoviesController < ApplicationController
         format.html { redirect_to movies_path }
         format.json { render action: 'show', status: :created, location: @movie }
       else
-        format.html { render action: 'new' }
+        format.html { render action: 'new_cast' }
         format.json { render json: @cast.errors, status: :unprocessable_entity }
       end
     end

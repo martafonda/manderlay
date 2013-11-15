@@ -6,6 +6,13 @@
   <header>
     <div class="bck dark color white padding">
       <h1 class="row text center bold">My movies app</h1>
+      <nav>
+<!--         <ul>
+          <li><a>1</a></li>
+          <li><a>1</a></li>
+          <li><a>1</a></li>
+        </ul> -->
+      </nav>
     <div>
   </header>
 
@@ -19,13 +26,12 @@
         <li><p><strong><%= t('movie.year').capitalize %> : </strong><%= movie.year %></p></li>
         <li><p><strong><%= t('movie.category').capitalize %> : </strong><%= movie.category %></p></li>
       </ul>
-    </article>
-    <nav class="column_3 absolute movies-button-position">
-      <span class="button tiny on-left"><%= link_to t('movie.show').capitalize, movie %></span>
-      <span class="button tiny on-right"><%= link_to t('movie.destroy').capitalize, movie, method: :delete, data: { confirm: 'Are you sure?' } %></span><br>
-      <span class="bold on-left"><%= link_to t('movie.showpeople').capitalize, people_path(movie) %></span>
-      <span class="bold on-right"><%= link_to t('movie.edit').capitalize, edit_movie_path(movie) %></span>
+
+          <nav class="column_3 absolute movies-button-possition">
+      <span class="button tiny on-left secondary"><%= link_to t('movie.show').capitalize, movie %></span>
+      <span class="button tiny on-right secondary"><%= link_to t('movie.destroy').capitalize, movie, method: :delete, data: { confirm: 'Are you sure?' } %></span><br>
     </nav>
+    </article>
     <% end %>
   </section>
 

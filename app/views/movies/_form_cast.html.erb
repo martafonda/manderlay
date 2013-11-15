@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= f.label :person_id %><br>
-    <%= f.select :person_id, Person.all.map {|p| [p.name, p.id]} %>
+    <%= f.select :person_id, Person.all.map {|p| [p.name + " " + p.surname, p.id]} %>
   </div>
   <div class="field">
     <%= f.label :role %><br>
     <%= f.select :role, 
-      Cast::ROLES.map {|r| [r.titleize, r]}  %>
+    Cast::ROLES.map {|r| [r.titleize, r]}  %>
   </div>
 
   <div class="actions">
