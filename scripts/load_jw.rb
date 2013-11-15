@@ -1,9 +1,18 @@
 require 'json'
 require 'pry'
  
+def to_minutes b
+  if b == "N/A"
+    0
+  elsif b.index('h')
+      b.to_i*60 + b[b.index('h')..-1].to_i
+    else
+      b.to_i
+  end
+end
  
 def create_movie_from_json json
-  Movie.create title: json["Title"], duration: json["Runtime"], year: json["Year"], synopsis: json["Plot"]
+  Movie.create title: json["Title"], duration: to_minutes(json["Runtime"]), year: json["Year"], synopsis: json["Plot"]
 end
  
 def load_movies_from_file(file)
